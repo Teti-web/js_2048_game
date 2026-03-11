@@ -35,7 +35,9 @@ function renderBoard() {
 }
 
 function renderScore() {
-  scoreEl.textContent = game.getScore();
+  const score = game.getScore();
+
+  scoreEl.textContent = String(score);
 }
 
 function renderMessages() {

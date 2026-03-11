@@ -92,13 +92,17 @@ class Game {
 
   _rotateCW(board) {
     return board[0].map((_, colIdx) => {
-      board.map((row) => row[colIdx]).reverse();
+      const column = board.map((row) => row[colIdx]).reverse();
+
+      return column;
     });
   }
 
   _rotateCCW(board) {
     return board[0].map((_, colIdx) => {
-      board.map((row) => row[row.length - 1 - colIdx]);
+      const column = board.map((row) => row[row.length - 1 - colIdx]);
+
+      return column;
     });
   }
 
@@ -152,7 +156,12 @@ class Game {
     const [rowIndex, colIndex] =
       emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
-    this.board[rowIndex][colIndex] = Math.random() < 0.1 ? 4 : 2;
+    const value = Math.random() < 0.1 ? 4 : 2;
+
+    this.board[rowIndex][colIndex] = value;
+    this.score += value;
+
+    return value;
   }
 
   _updateStatus() {
